@@ -79,6 +79,8 @@ BALANCE=1000
 docker-compose up -d --build
 ```
 - После запуска проекта Swagger будет доступен по [адресу](http://127.0.0.1:8000/docs)
+- Чтобы добавить кошелек в базу используйте команду: `docker exec -it wallet_api python -m wallets_generate`
+
 
 ## Стек
 

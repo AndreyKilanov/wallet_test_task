@@ -1,14 +1,16 @@
-# import asyncio
+import asyncio
 import logging
 import random
 import uuid
 
 from core import db_manager
-# from core.config import settings
+from core.config import settings
 from models import Wallet
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+db_manager.init(settings.database_url)
 
 
 async def creating_test_wallets(wallet_uuid: str = None, balance: float = None) -> str:
@@ -27,7 +29,10 @@ async def creating_test_wallets(wallet_uuid: str = None, balance: float = None) 
         )
         session.add(wallet)
         await session.commit()
-        await session.refresh(wallet)
 
         logger.info(f'Wallet {wallet.uuid} created with balance {wallet.balance}')
         return wallet.uuid
+
+
+if __name__ == '__main__':
+    asyncio.run(creating_test_wallets(settings.wallet_uuid, settings.wallet_balance))

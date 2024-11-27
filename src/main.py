@@ -1,4 +1,3 @@
-import asyncio
 import contextlib
 from typing import AsyncIterator
 
@@ -6,9 +5,8 @@ from fastapi import FastAPI
 
 import core
 from api.routers import main_router
-from core.config import settings
 from cache import ping_redis_cache
-from core.wallets_generate import creating_test_wallets
+from core.config import settings
 
 
 @contextlib.asynccontextmanager
@@ -26,6 +24,3 @@ app = FastAPI(
 app.include_router(main_router)
 
 ping_redis_cache()
-
-# creating test wallet
-asyncio.create_task(creating_test_wallets(settings.wallet_uuid, settings.wallet_balance))

@@ -3,7 +3,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-# path = Path(__file__).parent.parent.parent / 'infra/.env'
+
 path = Path(__file__).parent / '.env'
 load_dotenv(path)
 

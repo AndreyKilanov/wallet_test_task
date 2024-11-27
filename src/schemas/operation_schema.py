@@ -1,7 +1,7 @@
 from decimal import Decimal
 from enum import Enum
 
-from pydantic import BaseModel, ConfigDict, PositiveFloat, UUID4, field_validator
+from pydantic import BaseModel, ConfigDict, PositiveFloat, field_validator
 
 
 class OperationType(str, Enum):

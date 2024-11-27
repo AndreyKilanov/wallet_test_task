@@ -44,19 +44,18 @@ services:
     networks:
       - wallet
 
-
   wallet_api:
     build: ../src
     container_name: wallet_api
     restart: always
     ports:
       - "8000:8000"
-    depends_on:
-      - postgres
-      - redis
     volumes:
       - ../src:/app
     env_file:
       - .env
+    depends_on:
+      - postgres
+      - redis
     networks:
       - wallet
